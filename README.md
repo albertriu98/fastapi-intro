@@ -27,3 +27,20 @@ At app/schemas.py  all pydantic schemas.<br>
 At app/oauth2.py all functions related to login flow<br>
 At app/utils.py all utility functions.<br>
 At app/main.py all routes are imported and FastAPI() instance is created.<br>
+
+
+#### Future Work
+Deploy the API in kubernetes
+    - Build Dockerfile
+    - Create env vars for some values
+    - Create Helm Chart
+    - Deploy the app as a package
+Deploy PostgreSQL operator in minikube
+Deploy PostreSQL cluster
+    - Add manfiest to the Helm Chart?
+Deploy Prometheus stack
+Monitor with prometheus the application
+    - Is instrumentation needed in the app?
+    - Deploy ServiceMonitor object
+
+
