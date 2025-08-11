@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fastapi-svc
+  labels:
+    job: node-api
+    app: fastapi
 spec:
   selector:
     app: fastapi
@@ -9,3 +12,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8000
+      name: web
