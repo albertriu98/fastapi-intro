@@ -2,6 +2,7 @@ from .database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from sqlalchemy.sql.expression import text
+from sqlalchemy.orm import relationship
 from sqlmodel import Field, SQLModel, create_engine
 
 class Post(Base):
@@ -14,6 +15,8 @@ class Post(Base):
     created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
     owner_id = Column(String, ForeignKey("users.email", ondelete="CASCADE"), nullable=False)
 
+    owner = relationship("User")
+
 class User(Base):
     __tablename__ = "users"
 
@@ -23,8 +26,8 @@ class User(Base):
     age = Column(Integer, nullable=False)
 
 
-class Heroe(SQLModel, table=True):
-    id: int | None = Field(default=None, primary_key=True)
-    secret_name :str
-    age: int | None = None
+# class Heroe(SQLModel, table=True):
+#     id: int | None = Field(default=None, primary_key=True)
+#     secret_name :str
+#     age: int | None = None
 

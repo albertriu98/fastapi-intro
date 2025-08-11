@@ -10,15 +10,6 @@ class Post(BaseModel): # create schema
     class Config:
         orm_mode = True
 
-class ReturnPosts(BaseModel):
-    title: str
-    content: str
-    published: bool
-    owner_id: str
-
-    class Config:
-        orm_mode = True
-
 class User(BaseModel):
     email: EmailStr
     name: str
@@ -31,6 +22,16 @@ class User(BaseModel):
 class ResponseUser(BaseModel):
     email: EmailStr
     name: str
+
+    class Config:
+        orm_mode = True
+
+class ReturnPosts(BaseModel):
+    title: str
+    content: str
+    published: bool
+    owner_id: str
+    owner: ResponseUser
 
     class Config:
         orm_mode = True
