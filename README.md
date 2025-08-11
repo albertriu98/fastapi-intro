@@ -21,10 +21,9 @@ The loogin flow is the following:
 
 
 ## Project structure:
-At app/routers you will find a file for each group of endpoints. Authentication, posts and users.
-At app/database.py all database connection related configuration.
-At app/models.py all the models defined using sqlAlchemy BaseModel.
-At app/schemas.py  all pydantic schemas.
-At app/oauth2.py all functions related to login flow
-At app/utils.py all utility functions.
-At app/main.py all routes are imported and FastAPI() instance is created.
+At app/routers you will find a file for each group of endpoints. Authentication, posts and users. <br>
+At app/models.py all the models defined using sqlAlchemy BaseModel.<br>
+At app/schemas.py  all pydantic schemas.<br>
+At app/oauth2.py all functions related to login flow<br>
+At app/utils.py all utility functions.<br>
+At app/main.py all routes are imported and FastAPI() instance is created.<br>
