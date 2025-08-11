@@ -37,15 +37,14 @@ def get_post(id: str, response: Response, db: Session = Depends(get_db)):
 @router.delete("/delete/{id}")
 def delete_post(id: int, db: Session = Depends(get_db), get_user: int = Depends(oauth2.get_current_user)):
     post = db.query(models.Post).filter(models.Post.id == id)
-
+    if post.first() == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No item found")
+    
     if post.first().owner_id != get_user.email:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not owner")
 
-    if post.first() != None:
-        post.delete(synchronize_session=False)
-        db.commit()
-    else:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No item found")
+    post.delete(synchronize_session=False)
+    db.commit()
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
