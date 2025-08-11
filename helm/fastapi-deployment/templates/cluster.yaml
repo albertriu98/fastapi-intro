@@ -9,8 +9,8 @@ spec:
   instances: 3
   bootstrap:
     initdb:
-      database: fastapi
-      owner: ariu
+      database: {{ .Values.database.name }}
+      owner: {{ .Values.database.owner }}
       secret:
         name: app-secret
   storage:

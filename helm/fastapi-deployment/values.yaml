@@ -1,0 +1,5 @@
+image: albertriu1998/fastapi
+database:
+  name: fastapi
+  owner: ariu
+  password: test

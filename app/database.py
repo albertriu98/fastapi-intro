@@ -7,8 +7,9 @@ import os
 user = os.getenv("POSTGRESQL_USER")
 password = os.getenv("POSTGRESQL_PASSWORD")
 address = os.getenv("POSTGRESQL_ADDRESS")
+database = os.getenv("POSTGRESQL_DATABASE_NAME")
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{address}:5432/fastapi"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{address}:5432/{database}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
 

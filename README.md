@@ -19,8 +19,11 @@ The loogin flow is the following:
 3. If credentials are matching, a JWT is returned. This JWT payload is created only with the user_id field, but copuld contain more fileds such as scopes. The token is encoded witha  secret value using jose.jwt
 4. When a user tries for example to query for example /upload endpoint, through dependency token is required.
 
+## Prerequisites
+- Kubernetes cluster
+- Have CloudNative PG operator installed
 
-## Project structure:
+## Application structure:
 At app/routers you will find a file for each group of endpoints. Authentication, posts and users. <br>
 At app/models.py all the models defined using sqlAlchemy BaseModel.<br>
 At app/schemas.py  all pydantic schemas.<br>
@@ -28,6 +31,13 @@ At app/oauth2.py all functions related to login flow<br>
 At app/utils.py all utility functions.<br>
 At app/main.py all routes are imported and FastAPI() instance is created.<br>
 
+
+## Helm
+
+The Helm chart installs:
+- As a preinstall hook the PostgreSQL cluster and the secret containing the credentials for the database sepcified as fastapi in the manfiest.
+- Deployment to install FastAPI application.
+- Service to expose the deployment internally.
 
 ## Future Work
 * Deploy the API in kubernetes<br>
@@ -42,5 +52,7 @@ At app/main.py all routes are imported and FastAPI() instance is created.<br>
 * Monitor with prometheus the application<br>
     * Is instrumentation needed in the app?<br>
     * Deploy ServiceMonitor object<br>
+
+
 
 
