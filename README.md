@@ -29,18 +29,18 @@ At app/utils.py all utility functions.<br>
 At app/main.py all routes are imported and FastAPI() instance is created.<br>
 
 
-#### Future Work
-Deploy the API in kubernetes
-    - Build Dockerfile
-    - Create env vars for some values
-    - Create Helm Chart
-    - Deploy the app as a package
-Deploy PostgreSQL operator in minikube
-Deploy PostreSQL cluster
-    - Add manfiest to the Helm Chart?
-Deploy Prometheus stack
-Monitor with prometheus the application
-    - Is instrumentation needed in the app?
-    - Deploy ServiceMonitor object
+## Future Work
+* Deploy the API in kubernetes<br>
+    * Build Dockerfile **OK**<br>
+    * Create env vars for some values **OK**<br>
+    * Create Helm Chart **OK**<br>
+    * Deploy the app as a package **OK**<br>
+* Deploy PostgreSQL operator in minikube **OK**<br>
+* Deploy PostreSQL cluster **OK**<br>
+    * Add manfiest to the Helm Chart **OK**<br>
+* Deploy Prometheus stack<br>
+* Monitor with prometheus the application<br>
+    * Is instrumentation needed in the app?<br>
+    * Deploy ServiceMonitor object<br>
 
 

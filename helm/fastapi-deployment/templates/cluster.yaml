@@ -1,0 +1,17 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: fastapi-db
+  annotations:
+    helm.sh/hook: pre-install
+    helm.sh/hook-weight: "2"
+spec:
+  instances: 3
+  bootstrap:
+    initdb:
+      database: fastapi
+      owner: ariu
+      secret:
+        name: app-secret
+  storage:
+    size: 1Gi

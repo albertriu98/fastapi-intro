@@ -1,9 +1,14 @@
-from sqlmodel import create_engine, SQLModel
+#from sqlmodel import create_engine, SQLModel
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
-SQLALCHEMY_DATABASE_URL = "postgresql://ariu:test@127.0.0.1/fastapi"
+user = os.getenv("POSTGRESQL_USER")
+password = os.getenv("POSTGRESQL_PASSWORD")
+address = os.getenv("POSTGRESQL_ADDRESS")
+
+SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{address}:5432/fastapi"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo=True)
 
