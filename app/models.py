@@ -25,6 +25,11 @@ class User(Base):
     password = Column(String, nullable=False)
     age = Column(Integer, nullable=False)
 
+class Vote (Base):
+    __tablename__ = "votes"
+    user_id = Column(String, ForeignKey("users.email", ondelete="CASCADE"), nullable=False, primary_key=True)
+    post_id = Column(Integer, ForeignKey("posts.id", ondelete="CASCADE"), nullable=False, primary_key=True)
+
 
 # class Heroe(SQLModel, table=True):
 #     id: int | None = Field(default=None, primary_key=True)
