@@ -34,4 +34,4 @@ spec:
         - name: POSTGRESQL_DATABASE_NAME
           value: {{ .Values.database.name }}
         - name: POSTGRESQL_ADDRESS
-          value: "10.99.254.159" #problems with DNS resolution of the service
+          value: "10.99.254.159" #problems with DNS resolution of the service but this should be the rw servie of the cluster

@@ -21,7 +21,8 @@ The loogin flow is the following:
 
 ## Prerequisites
 - Kubernetes cluster
-- Have CloudNative PG operator installed
+- Have CloudNative PG operator installed: https://github.com/cloudnative-pg/charts
+- Install kube-prometheus-stack helm chart: https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack
 
 ## Application structure:
 At app/routers you will find a file for each group of endpoints. Authentication, posts and users. <br>
@@ -31,28 +32,18 @@ At app/oauth2.py all functions related to login flow<br>
 At app/utils.py all utility functions.<br>
 At app/main.py all routes are imported and FastAPI() instance is created.<br>
 
+## Dockerfile
+Dockerfile creates an image with al the needed packages to run the fastAPI application. <br>
+Just  run docker built -t tag . from the root of the directory.
 
 ## Helm
-
 The Helm chart installs:
 - As a preinstall hook the PostgreSQL cluster and the secret containing the credentials for the database sepcified as fastapi in the manfiest.
 - Deployment to install FastAPI application.
 - Service to expose the deployment internally.
-
-## Future Work
-* Deploy the API in kubernetes<br>
-    * Build Dockerfile **OK**<br>
-    * Create env vars for some values **OK**<br>
-    * Create Helm Chart **OK**<br>
-    * Deploy the app as a package **OK**<br>
-* Deploy PostgreSQL operator in minikube **OK**<br>
-* Deploy PostreSQL cluster **OK**<br>
-    * Add manfiest to the Helm Chart **OK**<br>
-* Deploy Prometheus stack<br>
-* Monitor with prometheus the application<br>
-    * Is instrumentation needed in the app?<br>
-    * Deploy ServiceMonitor object<br>
+- Prometheus serviceMonitor to scrape metrics from the app.
 
 
+PD: for handling secrets SOPS could be used.
 
 
