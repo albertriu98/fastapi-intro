@@ -3,7 +3,7 @@
 
 In this project I set up a basic API to test CRUD operations for posts model, storing data in a PostrgeSQL Server deployed localy.
 
-The API is developed with FLaskAPI. It connects to a PostgreSQL Server Database and creates 2 different tables: users and posts.
+The API is developed with FastAPI. It connects to a PostgreSQL Server Database and creates 2 different tables: users and posts.
 This tables are created by the API using ORM sqlAlchemy inheriting from BaseModel class. Its definitions can eb found in app/models.py. In this file it is also commented a definition of a model using SQLModel library.
 
 On the other hand we create some schemas for body input and responses. They can be found at app/schemas.py

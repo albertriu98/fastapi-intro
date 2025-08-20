@@ -17,7 +17,7 @@ def vote(vote: schemas.Vote, db: Session = Depends(get_db), current_user: int = 
     found_vote = vote_query.first()
     if (vote.dir == 1):
         if found_vote:
-            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"User {current_user} has already liked this post {found_vote.post_id}")
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"User {current_user.email} has already liked this post {found_vote.post_id}")
         new_vote = models.Vote(user_id= current_user.email, post_id=vote.post_id)
         db.add(new_vote)
         db.commit()
