@@ -3,3 +3,4 @@ database:
   name: fastapi
   owner: ariu
   password: test
+  ip: "10.107.67.124"
