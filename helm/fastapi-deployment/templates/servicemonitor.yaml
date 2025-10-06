@@ -1,19 +1,19 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: fastapi-monitor
-  namespace: prometheus-stack
+  name: fastapi-servicemonitor
+  namespace: prometheus-stack        # namespace where Prometheus Operator is installed
   labels:
-    app: kube-prometheus-stack-apiserver
-    release: prometheus-stack
+    release: prometheus-stack       # must match prometheus.prometheusSpec.serviceMonitorSelector
 spec:
-  jobLabel: job
-  endpoints:
-    - interval: 30s
-      port: web
-  namespaceSelector:
-    matchNames:
-    - fastapi
   selector:
     matchLabels:
-      app: fastapi
+      app: fastapi                  # must match your FastAPI Service label
+  namespaceSelector:
+    matchNames:
+      - fastapi                     # namespace where your FastAPI Service is
+  endpoints:
+    - port: web                      # must match the Service port name
+      path: /metrics                 # Prometheus metrics path
+      interval: 15s                  # scrape interval
+      scrapeTimeout: 10s             # optional, default 10s
